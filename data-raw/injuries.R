@@ -45,19 +45,10 @@ add_playoff_indicator <- function(df) {
 }
 
 add_group_position <- function(df) {
-  player_totals <- read_csv("inst/extdata/bref_player_totals.csv")
+  utils::data(player_totals, package = "NBAinjuries")
 
   group_positions <- player_totals %>%
-    count(slugPlayerBREF, groupPosition) %>%
-    arrange(desc(n)) %>%
-    group_by(slugPlayerBREF) %>%
-    summarise(
-      MostPlayedGroupPosition = first(groupPosition)
-    )
-
-  # player_totals %>%
-  #   left_join(group_positions, by = "slugPlayerBREF") %>%
-  #   write_csv("output/player_totals.csv")
+    distinct(slugPlayerBREF, MostPlayedGroupPosition)
 
   df %>%
     left_join(group_positions, by = "slugPlayerBREF")
