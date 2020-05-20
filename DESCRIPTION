@@ -1,0 +1,24 @@
+Package: NBAinjuries
+Title: Datasets For NBA Injuries Papers
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Tyler",
+           family = "Ferguson",
+           role = c("aut", "cre"),
+           email = "tylerferguson235@gmail.com")
+Description: Provides the various datasets required for the different analyses
+  along with complete documentation of each dataset.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+Imports: 
+    dplyr,
+    dtplyr,
+    data.table,
+    nbastatR,
+    magrittr,
+    assertr,
+    lubridate,
+    future
