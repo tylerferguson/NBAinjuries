@@ -48,7 +48,7 @@ add_group_position <- function(df) {
   utils::data(player_totals, package = "NBAinjuries")
 
   group_positions <- player_totals %>%
-    distinct(slugPlayerBREF, MostPlayedGroupPosition)
+    distinct(slugPlayerBREF, GroupPosition)
 
   df %>%
     left_join(group_positions, by = "slugPlayerBREF")
@@ -107,11 +107,12 @@ to_output <- function(df) {
   df %>%
     select(
       PlayerName = OGName,
+      PlayerId = slugPlayerBREF,
       PlayerDOB = dateBirth,
       Height = heightInches,
       Weight = weightLBS,
       Positions = namePosition,
-      GroupPosition = MostPlayedGroupPosition,
+      GroupPosition,
       IsActive = isActive,
       FirstSeason = yearSeasonFirst,
       LastSeason = yearSeasonLast,
