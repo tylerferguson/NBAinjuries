@@ -103,6 +103,39 @@ add_previous_transaction <- function(df) {
     left_join(last_transactions, by = c("slugPlayerBREF", "DateInjured"))
 }
 
+to_output <- function(df) {
+  df %>%
+    select(
+      PlayerName = OGName,
+      PlayerDOB = dateBirth,
+      Height = heightInches,
+      Weight = weightLBS,
+      Positions = namePosition,
+      GroupPosition = MostPlayedGroupPosition,
+      IsActive = isActive,
+      FirstSeason = yearSeasonFirst,
+      LastSeason = yearSeasonLast,
+      SeasonsPlayed = countSeasonsPlayed,
+      TeamNameFull = Team,
+      TeamLocation = Location,
+      TeamName,
+      Season = season,
+      SeasonStartYear,
+      SeasonEndYear,
+      TeamMadePlayoffs = MadePlayoffs,
+      DateInjured,
+      DateReturned,
+      GamesMissed,
+      DaysInjured = DaysBetweenInjuredReturned,
+      DaysBetweenGames = DaysBetweenLastAndReturnGame,
+      BodyPartInjured = body_part,
+      InjuryDescription = Notes,
+      LastTransactionDate,
+      LastTransactionDescription,
+      LastTransactionType
+    )
+}
+
 NA_date_ <- structure(NA_real_, class = "Date")
 
 injury_reports <- read_csv("inst/extdata/basketball_2007.csv") %>%
@@ -205,6 +238,7 @@ injuries <- injury_reports %>%
   add_profile_info(bref_players %>% select(slugPlayerBREF, isActive)) %>%
   add_playoff_indicator()  %>%
   add_group_position() %>%
-  add_previous_transaction()
+  add_previous_transaction() %>%
+  to_output()
 
 usethis::use_data(injuries, overwrite = TRUE)
