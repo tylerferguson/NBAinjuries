@@ -4,9 +4,11 @@
 #' A dataset containing injury details, time missed due to injury, player
 #' biographical information and most recent player transaction details.
 #'
-#' @format A data frame with 6541 rows and 39 variables:
+#' @format A data frame with 6541 rows and 28 variables:
 #' \describe{
 #'   \item{PlayerName}{full name of player}
+#'   \item{PlayerId}{Basketball Reference player ID as seen in url e.g.
+#'     \url{https://www.basketball-reference.com/players/b/bryanko01.html}}
 #'   \item{PlayerDOB}{date of birth}
 #'   \item{Height}{height, in inches}
 #'   \item{Weight}{weight, in pounds}
@@ -43,4 +45,17 @@
 #'   \item{LastTransactionType}{type of the transaction on LastTransactionDate
 #'     e.g. Signing, Trade, etc.}
 #' }
+#' @source Scraped from \url{https://www.basketball-reference.com/} and \url{https://stats.nba.com/} using [nbastatsR](https://github.com/abresler/nbastatR) and [sportsreferenceR](https://github.com/tylerferguson/sportsreferenceR).
 "injuries"
+
+#' Season summary statistics of all NBA players from the 2006-2007 season to the
+#' 2019-2020 season.
+#'
+#' A dataset that is directly scraped from Basketball Reference and presented
+#' unprocessed except for one additional column, GroupPosition:
+#' most frequently played group position during study period according to
+#' Basketball Reference (G, F or C)
+#'
+#' @format A data frame with 6715 rows and 40 variables
+#' @source Scraped from \url{https://www.basketball-reference.com/}.
+"player_totals"
