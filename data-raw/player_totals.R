@@ -5,7 +5,7 @@ group_positions <- raw_player_totals %>%
   arrange(desc(n)) %>%
   group_by(slugPlayerBREF) %>%
   summarise(
-    MostPlayedGroupPosition = first(groupPosition)
+    GroupPosition = first(groupPosition)
   )
 
 player_totals <- raw_player_totals %>%
