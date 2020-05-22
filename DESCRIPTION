@@ -22,5 +22,7 @@ Imports:
     assertr,
     lubridate,
     future
+Remotes:
+    abresler/nbastatR
 Depends:
     R (>= 2.10)
