@@ -10,7 +10,7 @@ add_profile_info <- function(df, bref_players) {
     select(slugPlayerBREF, dateBirth, heightInches, weightLBS, namePosition)
 
   nba_profiles <- read_csv("inst/extdata/nba_bios.csv") %>%
-    select(idPlayer, yearSeasonFirst, yearSeasonLast, countSeasonsPlayed)
+    select(idPlayer, yearSeasonFirst, yearSeasonLast, countSeasonsPlayed, numberOverallPick)
 
   df %>%
     left_join(bbref_profiles, by = "slugPlayerBREF") %>%
@@ -113,6 +113,7 @@ to_output <- function(df) {
       Weight = weightLBS,
       Positions = namePosition,
       GroupPosition,
+      DraftPick = numberOverallPick,
       IsActive = isActive,
       FirstSeason = yearSeasonFirst,
       LastSeason = yearSeasonLast,
